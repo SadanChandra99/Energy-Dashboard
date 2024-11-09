@@ -1,0 +1,6 @@
+/* Ensures the main container takes the full height */
+:host {
+    display: flex;
+    height: 100vh;
+  }
+  

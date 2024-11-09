@@ -1,0 +1,17 @@
+/* Welcome and Overview Container styling */
+h2 {
+    margin: 0;
+    font-size: 1.8em;
+  }
+  
+  h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  p {
+    font-size: 1em;
+    color: #555;
+  }
+  
