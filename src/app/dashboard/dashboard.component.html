@@ -1,13 +1,108 @@
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-    <h2>Welcome, {{ userName }}!</h2>
-    
-    <!-- Monthly Overview Container -->
-    <div style="padding: 20px; background-color: #f0f0f0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); min-width: 250px; text-align: center;">
-      <h3>Monthly Overview</h3>
-      <p>{{ monthlyOverview }} kW</p>
+<!-- Full-Width Container -->
+<div style="width: 100vw;  box-sizing: border-box; display: flex;">
+
+    <!-- Side Navbar -->
+    <nav style="width: 250px; background-color: #f6f6f6; padding: 20px; box-sizing: border-box;">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <h3 style="text-align: center; font-weight: bold;">Solar Energy Dashboard</h3>
+        <p style="text-align: center; font-size: 0.9rem;">Powered by Shell Global</p>
+      </div>
+  
+      <ul style="list-style: none; padding: 0; margin-top: 20px;">
+        <li style="margin-bottom: 10px;">
+          <button style="width: 100%; background-color: #fcd7a6; padding: 10px; border: none; border-radius: 4px;">
+            Dashboard
+          </button>
+        </li>
+        <li style="margin-bottom: 10px;">
+          <button style="width: 100%; background-color: transparent; padding: 10px; border: none; color: #333;">
+            Profile Settings
+          </button>
+        </li>
+        <li>
+          <button style="width: 100%; background-color: transparent; padding: 10px; border: none; color: #333;">
+            Logout
+          </button>
+        </li>
+      </ul>
+    </nav>
+  
+    <!-- Main Dashboard Content -->
+    <div style="flex: 1; padding: 20px; box-sizing: border-box;">
+  
+      <!-- Header with Welcome Message and Monthly Overview -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2>Welcome, <span style="font-weight: bold;">Naresh Kamble</span></h2>
+  
+        <!-- Monthly Overview Container -->
+        <div style="background-color: #ffe6cc; padding: 15px 25px; border-radius: 8px; display: flex; align-items: center; gap: 15px;">
+          <h3>Monthly Overview</h3>
+          <div style="display: flex; gap: 20px;">
+            <div style="text-align: center;">
+              <p>Energy Generation</p>
+              <p style="font-weight: bold; font-size: 1.2rem;">139.5 kW</p>
+            </div>
+            <div style="text-align: center;">
+              <p>Energy Consumption</p>
+              <p style="font-weight: bold; font-size: 1.2rem;">86.8 kW</p>
+            </div>
+            <div style="text-align: center;">
+              <p>Export to Grid</p>
+              <p style="font-weight: bold; font-size: 1.2rem;">52.7 kW</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Main Content Area with Chart and Metrics -->
+      <div style="display: flex; gap: 20px; align-items: flex-start;">
+  
+        <!-- Chart Display Area -->
+        <div style="flex: 2; background-color: #f9f9f9; padding: 20px; border-radius: 8px; max-height: 25vw;">
+          <h3 style="text-align: center;">Solar Generation & Consumption</h3>
+          <canvas baseChart
+                  [data]="chartData"
+                  [options]="chartOptions"
+                  [type]="chartType">
+          </canvas>
+        </div>
+  
+        <!-- Energy Metrics Display Area -->
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
+  
+          <!-- Dropdown for Period Selection -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <label for="periodSelect" style="font-weight: bold;">Current Month</label>
+            <select id="periodSelect" [(ngModel)]="selectedPeriod" (change)="onPeriodChange($event)" style="padding: 5px; border-radius: 4px;">
+              <option value="month">Current Month</option>
+              <option value="week">Current Week</option>
+              <option value="year">Current Year</option>
+            </select>
+          </div>
+  
+          <!-- Energy Generation Metric -->
+          <div style="padding: 10px; background-color: #f0f0f0; border-radius: 8px; text-align: center;">
+            <h4>Energy Generation</h4>
+            <p style="font-size: 1.5rem; font-weight: bold;">9574.40 kWh</p>
+            <div style="font-size: 0.9rem;">
+              <p>Daily (kW)</p>
+              <p>Min: 4.4 | Max: 4.6</p>
+            </div>
+          </div>
+  
+          <!-- Energy Consumption Metric -->
+          <div style="padding: 10px; background-color: #f0f0f0; border-radius: 8px; text-align: center;">
+            <h4>Energy Consumption</h4>
+            <p style="font-size: 1.5rem; font-weight: bold;">5661.60 kWh</p>
+            <div style="font-size: 0.9rem;">
+              <p>Daily (kW)</p>
+              <p>Min: 2.7 | Max: 2.9</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+  
     </div>
   </div>
-  
-  <!-- Additional content can go here -->
-  <p>This is your dashboard. Here, you can find all relevant solar data and analytics.</p>
   

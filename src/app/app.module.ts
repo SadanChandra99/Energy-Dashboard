@@ -3,22 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
-import { LogoutComponent } from './logout/logout.component';
+
+import { FormsModule } from '@angular/forms';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent,
     DashboardComponent,
-    ProfileSettingsComponent,
-    LogoutComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule, 
+    NgChartsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
