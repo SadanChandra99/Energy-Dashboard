@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ChartOptions, ChartType, ChartData } from 'chart.js';
 
 @Component({
@@ -10,6 +11,32 @@ export class DashboardComponent {
   userName: string = 'Naresh Kamble';
   selectedPeriod: string = 'month'; // Default to 'month'
   monthlyOverview: number = 139.5;
+
+  message: string | null = null;
+
+  constructor(private route: ActivatedRoute, private router: Router) {}
+
+  ngOnInit() {
+    this.route.data.subscribe(data => {
+      this.message = data['message'] ? `${data['message']} clicked` : null;
+    });
+  }
+  onDashboardClick(){
+    this.router.navigateByUrl('/dashboard');
+  }
+
+  onProfileSettingsClick() {
+    
+    this.router.navigateByUrl('/profile-settings');
+    // You could also use routing if you want to display another page
+  }
+
+  onLogoutClick() {
+  
+    this.router.navigateByUrl('/logout')
+    // You could redirect the user to a login page or clear session here
+  }
+
 
   // Mock data for energy metrics
   energyMetrics = {
@@ -61,7 +88,7 @@ export class DashboardComponent {
       case 'week':
         // Mock data for current week
         this.chartData = {
-          labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+          labels: ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
           datasets: [
             { label: 'Energy Generation', data: [70, 80, 60, 75, 85, 90, 95], borderColor: 'blue', fill: false },
             { label: 'Energy Consumption', data: [50, 60, 55, 60, 70, 75, 80], borderColor: 'red', fill: false }
